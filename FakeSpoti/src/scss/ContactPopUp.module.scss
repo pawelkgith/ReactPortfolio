@@ -1,0 +1,70 @@
+@use './colors.scss' as *;
+@use './fonts.scss' as *;
+
+.popUp {
+    position: fixed;
+    height: 30vh;
+    width: 30vw;
+    margin: 0;
+    padding: 0;
+    top: 35vh;
+    left: 35vw;
+
+    .container {
+        width: 100%;
+        height: 85%;
+    }
+
+    .header {
+        background-color: $green;
+        width: 100%;
+        height: 15%;
+        border-radius: $s3 $s3 0 0;
+
+        h1 {
+            color: rgb(245, 245, 245);
+            font-size: $s6;
+            font-family: $f2;
+            width: 100%;
+        }
+
+        .closeBtn {
+            position: absolute;
+            top: 2%;
+            right: 2%;
+            width: 5%;
+            height: 5%;
+            outline: none;
+            background-color: transparent;
+            border: none;
+            color: red;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .body {
+        background-color: $verydarkgray;
+        width: 100%;
+        height: 85%;
+        border-radius: 0 0 $s3 $s3;
+        padding: 1rem;
+
+        h3 {
+            color: $lightgray;
+            font-size: $s4;
+            font-family: $f1;
+        }
+
+        h2 {
+            color: rgb(245, 245, 245);
+            font-size: $s5;
+            font-family: $f3;
+            width: 100%;
+            text-align: center;
+            margin-top: 1rem;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+@use './colors.scss' as *;
+@use './fonts.scss' as *;
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    background-color: $verydarkgray;
+
+    h1 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $verylightgray;
+        font-family: $f2;
+        font-size: $s7;
+        width: 33%;
+        height: 100%;
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .searchbarDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 33%;
+        height: 100%;
+
+        .searchbar {
+            width: 70%;
+            height: 50%;
+            border-radius: $s3;
+            font-size: $s3;
+            padding: $s1;
+            outline: none;
+            border: 1px solid $softgray;
+        }
+    }
+
+    .contact {
+        width: 33%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .navBtn {
+            width: 30%;
+            height: 60%;
+            margin: $s3;
+            border: none;
+            border-radius: $s3;
+            transition: box-shadow 0.25s, opacity 0.25s;
+            transition: 0.25s;
+            font-size: $s3;
+            background-color: $green;
+            color: $verylightgray;
+            font-family: $f1;
+
+            &:hover {
+                box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.3);
+                cursor: pointer;
+            }
+
+            &:active {
+                opacity: 0.6;
+            }
+        }
+    }
+}
