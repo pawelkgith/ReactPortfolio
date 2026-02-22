@@ -54,19 +54,20 @@
             border: none;
             border-radius: $s3;
             transition: box-shadow 0.25s, opacity 0.25s;
-            transition: 0.25s;
+            transition: opacity 0.25s ease, transition 0.1s ease;
             font-size: $s3;
             background-color: $green;
             color: $verylightgray;
             font-family: $f1;
 
             &:hover {
-                box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.3);
+                box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.15);
                 cursor: pointer;
             }
 
             &:active {
                 opacity: 0.6;
+                transform: scale(0.95);
             }
         }
     }

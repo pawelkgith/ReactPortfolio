@@ -1,10 +1,16 @@
 import styles from '../scss/SocialsSidebar.module.scss';
+import VolumeSlider from './VolumeSlider';
 
-function SocialsSidebar() {
+interface SocialSidebarProps {
+    onVolumeChange: (v: number) => void;
+}
+
+function SocialsSidebar({onVolumeChange} : SocialSidebarProps) {
     return (
         <div className={styles.container}>
             <h1>Socials</h1>
-        </div> 
+            <VolumeSlider onSlide={onVolumeChange} />
+        </div>
     );
 }
 
