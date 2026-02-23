@@ -8,13 +8,14 @@ import SocialsSidebar from "./SocialsSidebar";
 function App() {
   const [volume, setVolume] = useState(1);
 
+  const [searchTerm, setSearchTerm] = useState<string>("");
   return (
     <>
       <div className={styles.container}>
-        <Header />
+        <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         <div className={styles.content}>
           <SocialsSidebar onVolumeChange={(v) => setVolume(v)} />
-          <MainWrapper globalVolume={volume} />
+          <MainWrapper globalVolume={volume} searchTerm={searchTerm} />
           <PlaylistSidebar />
         </div>
       </div>

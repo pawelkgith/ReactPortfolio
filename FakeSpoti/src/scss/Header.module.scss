@@ -26,17 +26,50 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 33%;
+        width: 40%;
         height: 100%;
+        overflow: hidden;
 
         .searchbar {
             width: 70%;
             height: 50%;
-            border-radius: $s3;
+            border-radius: $s3 0 0 $s3;
             font-size: $s3;
             padding: $s1;
+            padding-right: $s3;
             outline: none;
             border: 1px solid $softgray;
+            color: $verydarkgray;
+            font-family: $f1;
+        }
+
+        .clear {
+            width: 10%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid $softgray;
+            border-left: none;
+            background-color: $softgray;
+            border-radius: 0 $s3 $s3 0;
+            outline: none;
+            transition: opacity 0.2s;
+
+            &:hover {
+                cursor: pointer;
+                opacity: 0.7;
+            }
+
+            &:active {
+                opacity: 0.5;
+            }
+        }
+
+        .clearIcon {
+            width: 60%;
+            height: auto;
+
         }
     }
 

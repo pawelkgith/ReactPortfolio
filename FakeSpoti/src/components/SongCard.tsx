@@ -11,7 +11,7 @@ interface SongCardProps {
 }
 
 function SongCard({title, artist, isPlaying, volume, onToggle} : SongCardProps) {
-    const bannerSrc = `../public/assets/img/${title.split(' ').join('').toLowerCase()}.jpg`;
+    const bannerSrc = `/assets/img/${title.split(' ').join('').toLowerCase()}.jpg`;
     //const [isPlaying, setIsPlaying] = useState(false);
 
     const playButton = '/assets/img/playbutton.svg';
@@ -51,7 +51,7 @@ function SongCard({title, artist, isPlaying, volume, onToggle} : SongCardProps) 
             <h2>{artist}</h2>
             <div className={styles.controlPanel}>
                 <button className={styles.controlButton} onClick={onToggle}><img src={isPlaying ? pauseButton : playButton} alt="Play button" /></button>
-                <button className={styles.controlButton}><img src="../public/assets/img/plusbutton.svg" /></button>
+                <button className={styles.controlButton}><img src="/assets/img/plusbutton.svg" /></button>
             </div>
         </div>
     );
