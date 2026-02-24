@@ -33,7 +33,12 @@ function Header( { searchTerm, onSearchChange } : HeaderProps) {
           <button className={styles.navBtn} onClick={handleGithubRedirect}>GitHub</button>
           <button className={styles.navBtn} onClick={() => setIsPopUpOpen(!isPopUpOpen)}>Contact</button>
         </nav>
-        {isPopUpOpen && <ContactPopUp onClose={() => setIsPopUpOpen(false)} />}
+        {isPopUpOpen && <ContactPopUp 
+                        onClose={() => setIsPopUpOpen(false)} 
+                        title="Contact me"
+                        content="In case you were intrested in my projects, you cant contact me via e-mail: "
+                        email="pawelkielbasa500@gmail.com"
+                        />}
       </div>
     </>
   );

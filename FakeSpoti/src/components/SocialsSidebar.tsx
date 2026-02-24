@@ -8,7 +8,6 @@ interface SocialSidebarProps {
 function SocialsSidebar({onVolumeChange} : SocialSidebarProps) {
     return (
         <div className={styles.container}>
-            <h1>Socials</h1>
             <VolumeSlider onSlide={onVolumeChange} />
         </div>
     );

@@ -1,9 +1,13 @@
 import styles from '../scss/PlaylistSidebar.module.scss';
+import Playlist from './Playlist';
 
 function PlaylistSidebar() {
+    const addButtonSrc = "/assets/img/plusbutton.svg";
+
     return (
         <div className={styles.container}>
-            <h1>Playlist</h1>
+            <Playlist name="aaa" />
+            <Playlist imageSrc={addButtonSrc} />
         </div>
     );
 }
