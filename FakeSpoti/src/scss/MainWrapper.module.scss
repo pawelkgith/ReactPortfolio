@@ -11,4 +11,11 @@
     gap: $s4;
     overflow-y: auto;
     padding: $s5;
+
+    .noItems {
+        color: $white;
+        grid-column: 1 / -1;
+        font-size: $s5;
+        text-align: center;
+    }
 }

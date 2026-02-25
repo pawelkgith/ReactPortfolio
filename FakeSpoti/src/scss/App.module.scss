@@ -10,4 +10,114 @@
         height: 90%;
         display: flex;
     }
+
+    .playlistCreation {
+        width: 100%;
+        height: 100%;
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 60%;
+
+            h3 {
+                font-size: $s4;
+                text-align: center;
+            }
+
+            .playlistNameInput {
+                width: 80%;
+                height: 30%;
+                margin: auto;
+                padding: $s1;
+                border-radius: $s3;
+                outline: none;
+                border: 1px solid $green;
+                color: $softgray;
+                font-family: $f2;
+                font-size: $s3;
+            }
+        }
+
+        .modalActions {
+            display: flex;
+            width: 100%;
+            height: 40%;
+            justify-content: center;
+            align-items: center;
+
+            button {
+                width: 30%;
+                height: 50%;
+                margin: $s3;
+                border-radius: $s3;
+                color: $white;
+                font-size: $s3;
+                outline: none;
+                border: 1px solid $verylightgray;
+                transition: opacity 0.2s, transform 0.1s;
+
+                &:hover {
+                    cursor: pointer;
+                    opacity: 0.7;
+                }
+
+                &:active {
+                    opacity: 0.5;
+                    transform: scale(0.95);
+                }
+            }
+
+            .cancelButton {
+                background-color: $red;
+            }
+
+            .createButton {
+                background-color: $green;
+            }
+        }
+    }
+
+    .playlistSelection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h3 {
+            text-align: center;
+            font-size: $s4;
+            color: $white;
+            margin-bottom: $s1;
+        }
+
+        .list {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow: auto;
+
+            button {
+                width: 70%;
+                height: auto;
+                padding: $s2;
+                color: $white;
+                background-color: $softgray;
+                border-radius: $s2;
+                border: none;
+                margin: 2px;
+                transition: opacity 0.2s, background-color 0.2s;
+                font-family: $f2;
+                font-size: $s3;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $green;
+                }
+            }   
+        }
+    }
 }

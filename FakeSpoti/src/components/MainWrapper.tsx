@@ -2,13 +2,17 @@ import styles from '../scss/MainWrapper.module.scss';
 import SongCard from './SongCard';
 import { useState } from 'react';
 import data from '../assets/SongsData.json';
+import { PlaylistData } from './App';
 
 interface MainWrapperProps {
     globalVolume:number;
     searchTerm:string;
+    selectedPlaylistId: string | null;
+    playlists: PlaylistData[];
+    onAddClick: (id: number) => void;
 }
 
-function MainWrapper({globalVolume, searchTerm} : MainWrapperProps) {
+function MainWrapper({globalVolume, searchTerm, selectedPlaylistId, playlists, onAddClick} : MainWrapperProps) {
     const [activeSongId, setActiveSongId] = useState<number | null>(null);
 
     const handleTogglePlay = (id: number) => {
@@ -19,8 +23,18 @@ function MainWrapper({globalVolume, searchTerm} : MainWrapperProps) {
         const title = song.title?.toLowerCase() ?? "";
         const artist = song.artist?.toLowerCase() ?? "";
         const search = searchTerm?.toLowerCase() ?? "";
+        const searchMatch = title.includes(search) || artist.includes(search);
+        
+        if(selectedPlaylistId === null)
+            return searchMatch;
 
-        return title.includes(search) || artist.includes(search);
+        else {
+            const currentPlaylist = playlists.find((el) => el.id === selectedPlaylistId)
+
+            const isInPlaylist = currentPlaylist?.songIds.includes(song.id);
+
+            return searchMatch && isInPlaylist;
+        }
     });
 
     return (
@@ -29,9 +43,25 @@ function MainWrapper({globalVolume, searchTerm} : MainWrapperProps) {
         // </div>
 
         <div className={styles.container}>
-            {filteredSongs.map((el) => (
-                <SongCard key={el.id} id={el.id} title={el.title} artist={el.artist} isPlaying={activeSongId === el.id} volume={globalVolume} onToggle={() => handleTogglePlay(el.id)} />
-            ))}
+            {filteredSongs.length > 0 ? (
+                filteredSongs.map((el) => (
+                    <SongCard 
+                        key={el.id} 
+                        id={el.id} 
+                        title={el.title} 
+                        artist={el.artist} 
+                        isPlaying={activeSongId === el.id} 
+                        volume={globalVolume} 
+                        onToggle={() => handleTogglePlay(el.id)}
+                        onAdd={onAddClick} />
+                ))
+            ) :
+            (
+                <div className={styles.noItems}>
+                    <h2>No songs found in this playlist</h2>
+                </div>
+            )
+            }
         </div>
     );
 }

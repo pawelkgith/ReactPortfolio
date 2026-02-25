@@ -13,7 +13,7 @@
         justify-content: center;
         color: $verylightgray;
         font-family: $f2;
-        font-size: $s7;
+        font-size: $s6;
         width: 33%;
         height: 100%;
         
@@ -102,6 +102,23 @@
                 opacity: 0.6;
                 transform: scale(0.95);
             }
+        }
+    }
+
+    .contactContent {
+        display: flex;
+        flex-direction: column;
+        
+        h3 {
+            font-size: $s4;
+            text-align: center;
+        }
+
+        h2 {
+            padding-top: $s3;
+            font-size: $s5;
+            text-align: center;
+            font-family: $f1;
         }
     }
 }

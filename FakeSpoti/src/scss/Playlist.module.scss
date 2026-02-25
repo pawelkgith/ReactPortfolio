@@ -22,6 +22,10 @@
         font-size: $s4;
     }
 
+    .active {
+        color: $green;
+    }
+
     img, h3 {
         transition: opacity 0.2s, transform 0.1s ease;
         

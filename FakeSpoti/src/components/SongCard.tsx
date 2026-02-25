@@ -8,11 +8,11 @@ interface SongCardProps {
     isPlaying: boolean;
     volume: number;
     onToggle: () => void;
+    onAdd: (id: number) => void;
 }
 
-function SongCard({title, artist, isPlaying, volume, onToggle} : SongCardProps) {
+function SongCard({ id, title, artist, isPlaying, volume, onToggle, onAdd } : SongCardProps) {
     const bannerSrc = `/assets/img/${title.split(' ').join('').toLowerCase()}.jpg`;
-    //const [isPlaying, setIsPlaying] = useState(false);
 
     const playButton = '/assets/img/playbutton.svg';
     const pauseButton = '/assets/img/pausebutton.svg';
@@ -20,10 +20,6 @@ function SongCard({title, artist, isPlaying, volume, onToggle} : SongCardProps) 
 
     const audioRef = useRef<HTMLAudioElement>(null);
     const audioSrc = `assets/music/${title.split(' ').join('').toLowerCase()}.mp3`;
-
-    ///const handlePlayClick = () => {
-        //setIsPlaying(!isPlaying);
-    //}
 
     useEffect(() => {
         if(audioRef.current) {
@@ -51,7 +47,7 @@ function SongCard({title, artist, isPlaying, volume, onToggle} : SongCardProps) 
             <h2>{artist}</h2>
             <div className={styles.controlPanel}>
                 <button className={styles.controlButton} onClick={onToggle}><img src={isPlaying ? pauseButton : playButton} alt="Play button" /></button>
-                <button className={styles.controlButton}><img src="/assets/img/plusbutton.svg" /></button>
+                <button className={styles.controlButton}><img src="/assets/img/plusbutton.svg" onClick={() => onAdd(id)}/></button>
             </div>
         </div>
     );

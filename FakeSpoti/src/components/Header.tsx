@@ -1,6 +1,6 @@
 import styles from '../scss/Header.module.scss';
 import { MouseEvent, useState } from 'react';
-import ContactPopUp from './ContactPopUp';
+import PopUp from './PopUp';
 
 interface HeaderProps {
   searchTerm: string;
@@ -33,12 +33,16 @@ function Header( { searchTerm, onSearchChange } : HeaderProps) {
           <button className={styles.navBtn} onClick={handleGithubRedirect}>GitHub</button>
           <button className={styles.navBtn} onClick={() => setIsPopUpOpen(!isPopUpOpen)}>Contact</button>
         </nav>
-        {isPopUpOpen && <ContactPopUp 
-                        onClose={() => setIsPopUpOpen(false)} 
-                        title="Contact me"
-                        content="In case you were intrested in my projects, you cant contact me via e-mail: "
-                        email="pawelkielbasa500@gmail.com"
-                        />}
+        {isPopUpOpen && 
+        <PopUp 
+          onClose={() => setIsPopUpOpen(false)} 
+          title="Contact me">
+            <div className={styles.contactContent}>
+              <h3>In case you were intrested in my projects, contact me via e-mail: </h3>
+              <h2>pawelkielbasa500@gmail.com</h2>
+            </div>
+          </PopUp>
+        }
       </div>
     </>
   );
