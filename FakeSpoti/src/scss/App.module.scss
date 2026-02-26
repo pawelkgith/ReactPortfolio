@@ -121,3 +121,183 @@
         }
     }
 }
+
+@media (max-width: 1400px) {
+    .container {
+        .playlistCreation {
+            .form {
+                h3 {
+                    font-size: 1.8rem;
+                }
+            }
+
+            .modalActions {
+                button {
+                    margin: $s2;
+                    font-size: 1.3rem;
+                }
+            }
+        }
+
+        .playlistSelection {
+            h3 {
+                font-size: 1.7rem;
+            }
+
+            .list {
+                button {
+                    padding: $s1;
+                }   
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        .playlistCreation {
+            .form {
+                h3 {
+                    font-size: 1.7rem;
+                }
+
+                .playlistNameInput {
+                    font-size: 1.3rem;
+                }
+            }
+
+            .modalActions {
+                button {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        .playlistSelection {
+            h3 {
+                font-size: $s3;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        .playlistCreation {
+            .form {
+                h3 {
+                    font-size: $s3;
+                }
+
+                .playlistNameInput {
+                    height: 25%;
+                    font-size: 1.2rem;
+                }
+            }
+
+            .modalActions {
+                width: 100%;
+                height: 40%;
+
+                button {
+                    margin: 0.8rem;
+                    font-size: 1.1rem;
+                }
+            }
+        }
+
+        .playlistSelection {
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            .list {
+                button {
+                    font-size: 1.6rem;
+                }   
+            }
+        }
+    }
+}
+
+@media (max-width: 762px) {
+    .container {
+        .playlistCreation {
+            .form {
+                h3 {
+                    font-size: 1.2rem;
+                    text-align: center;
+                }
+
+                .playlistNameInput {
+                    font-size: 1.1rem;
+                }
+            }
+
+            .modalActions {
+                button {
+                    width: 35%;
+                    height: 40%;
+                    margin: $s1;
+                    font-size: $s2;
+                    border: 1px solid $verylightgray;
+                }
+            }
+        }
+
+        .playlistSelection {
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .list {
+                button {
+                    padding: $s1;
+                    color: $white;
+                    font-size: 1.1rem;
+                }   
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        .playlistCreation {
+            .form {
+                h3 {
+                    font-size: $s2;
+                }
+
+                .playlistNameInput {
+                    height: 20%;
+                    font-size: $s2;
+                }
+            }
+
+            .modalActions {
+                button {
+                    width: 30%;
+                    height: 35%;
+                    margin: $s1;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+
+        .playlistSelection {
+            h3 {
+                font-size: $s2;
+            }
+
+            .list {
+                width: 100%;
+
+                button {
+                    width: 80%;
+                    font-size: $s2;
+                }   
+            }
+        }
+    }
+}
