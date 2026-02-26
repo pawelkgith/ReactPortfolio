@@ -46,8 +46,8 @@ function SongCard({ id, title, artist, isPlaying, volume, onToggle, onAdd } : So
             <h1>{title}</h1>
             <h2>{artist}</h2>
             <div className={styles.controlPanel}>
-                <button className={styles.controlButton} onClick={onToggle}><img src={isPlaying ? pauseButton : playButton} alt="Play button" /></button>
-                <button className={styles.controlButton}><img src="/assets/img/plusbutton.svg" onClick={() => onAdd(id)}/></button>
+                <button className={styles.controlButton} onClick={onToggle}><img src={isPlaying ? pauseButton : playButton} className={!isPlaying ? styles.playIcon : ''} alt="Play button" /></button>
+                <button className={styles.controlButton} onClick={() => onAdd(id)}><img src="/assets/img/plusbutton.svg" alt="Add button" /></button>
             </div>
         </div>
     );

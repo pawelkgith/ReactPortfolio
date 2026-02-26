@@ -3,12 +3,13 @@ import VolumeSlider from './VolumeSlider';
 
 interface SocialSidebarProps {
     onVolumeChange: (v: number) => void;
+    volume: number;
 }
 
-function SocialsSidebar({onVolumeChange} : SocialSidebarProps) {
+function SocialsSidebar({ onVolumeChange, volume } : SocialSidebarProps) {
     return (
         <div className={styles.container}>
-            <VolumeSlider onSlide={onVolumeChange} />
+            <VolumeSlider onSlide={onVolumeChange} volume={volume} />
         </div>
     );
 }

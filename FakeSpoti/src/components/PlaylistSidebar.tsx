@@ -6,10 +6,11 @@ interface PlaylistSidebarProps {
     playlists: PlaylistData[];
     onCreateClick: () => void;
     onSelectPlaylist: (id: string | null) => void;
+    onDeletePlaylist: (id: string) => void;
     selectedId: string | null;
 }
 
-function PlaylistSidebar({ playlists, onCreateClick, onSelectPlaylist, selectedId }: PlaylistSidebarProps ) {
+function PlaylistSidebar({ playlists, onCreateClick, onSelectPlaylist, onDeletePlaylist, selectedId }: PlaylistSidebarProps ) {
     const addButtonSrc = "/assets/img/plusbutton.svg";
 
     return (
@@ -21,6 +22,7 @@ function PlaylistSidebar({ playlists, onCreateClick, onSelectPlaylist, selectedI
                     name={playlist.name}
                     onPlaylistAdd={() => onSelectPlaylist(playlist.id)}
                     isActive={playlist.id === selectedId}
+                    onDelete={() => onDeletePlaylist(playlist.id)}
                     />
             ))}
             <Playlist imageSrc={addButtonSrc} onPlaylistAdd={onCreateClick} />

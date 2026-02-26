@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '../scss/VolumeSlider.module.scss';
 
 interface VolumeSliderProps {
+    volume: number;
     onSlide?: (volume: number) => void;
 }
 
-function VolumeSlider({onSlide} : VolumeSliderProps) {
+function VolumeSlider({ volume,  onSlide } : VolumeSliderProps) {
     const speakerSrc = "/assets/img/speaker.svg";
     const mutedSpeakerSrc = "/assets/img/mutedspeaker.svg";
     
     const [volumeValue, setVolumeValue] = useState(100);
     const [prevVolume, setPrevVolume] = useState<number | null>(null);
+
+    useEffect(() => {
+        setVolumeValue(volume * 100);
+    }, [volume])
 
     const handleVolumeToggle = () => {
         if(volumeValue === 0 && prevVolume) {
@@ -34,7 +39,7 @@ function VolumeSlider({onSlide} : VolumeSliderProps) {
     return (
         <div className={styles.volumeContainer}>
             <span className={styles.icon}><img src={volumeValue === 0 ? mutedSpeakerSrc : speakerSrc} onClick={handleVolumeToggle}/></span>
-            <input type="range" min="0" max="100" step="1" className={styles.slider} value={volumeValue} onChange={handleSliderChange}/>
+            <input type="range" min="0" max="100" step="1" className={styles.slider} value={Number(volumeValue)} onChange={handleSliderChange}/>
         </div> 
     );
 }

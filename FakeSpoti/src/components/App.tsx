@@ -1,5 +1,5 @@
 import styles from "../scss/App.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import MainWrapper from "./MainWrapper";
 import PlaylistSidebar from "./PlaylistSidebar";
@@ -13,9 +13,18 @@ export interface PlaylistData {
 }
 
 function App() {
-  const [volume, setVolume] = useState(1);
+  const [volume, setVolume] = useState<number>(() => {
+    const savedVolume = localStorage.getItem("volume");
+    return savedVolume ? Number(savedVolume) : 1;
+  });
+
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [playlists, setPlaylists] = useState<PlaylistData[]>([]);
+
+  const [playlists, setPlaylists] = useState<PlaylistData[]>(() => {
+    const savedPlaylists = localStorage.getItem("myPlaylists");
+    return savedPlaylists ? JSON.parse(savedPlaylists) : [];
+  });
+
   const [selectedPlaylistId, setSelectedPlaylistId] = useState<string | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState("");
@@ -54,6 +63,7 @@ function App() {
 
         if(playlist.songIds.includes(addedSongId)) {
           alert("This song is already in playlist");
+          setAddedSongId(null);
           return playlist;
         }
         
@@ -66,14 +76,28 @@ function App() {
     setAddedSongId(null);
   }
 
+  const handleRemovePlaylist = (id: string) => {
+    setPlaylists((prev) => prev.filter((playlist) => playlist.id !== id));
+    if(selectedPlaylistId === id)
+      setSelectedPlaylistId(null);
+  }
+
+  useEffect(() => {
+    localStorage.setItem("volume", volume.toString());
+  }, [volume]);
+
+  useEffect(() => {
+    localStorage.setItem("myPlaylists", JSON.stringify(playlists));
+  }, [playlists]);
+
   return (
     <>
       <div className={styles.container}>
         <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         <div className={styles.content}>
-          <SocialsSidebar onVolumeChange={(v) => setVolume(v)} />
+          <SocialsSidebar onVolumeChange={(v) => setVolume(v)} volume={volume} />
           <MainWrapper globalVolume={volume} searchTerm={searchTerm} selectedPlaylistId={selectedPlaylistId} playlists={playlists} onAddClick={handleOpenAddMenu}/>
-          <PlaylistSidebar playlists={playlists} onCreateClick={() => setIsCreateModalOpen(true)} onSelectPlaylist={handlePlaylistSelect} selectedId={selectedPlaylistId} />
+          <PlaylistSidebar playlists={playlists} onCreateClick={() => setIsCreateModalOpen(true)} onSelectPlaylist={handlePlaylistSelect} selectedId={selectedPlaylistId} onDeletePlaylist={handleRemovePlaylist} />
         </div>
 
         {isCreateModalOpen && (
@@ -91,6 +115,7 @@ function App() {
                   value={newPlaylistName}
                   maxLength={30}
                   onChange={(e) => setNewPlaylistName(e.target.value)}
+                  onKeyDown={(e) => {if(e.key === 'Enter') {handleAddPlaylist()}}}
                   autoFocus
                 />
               </div>
