@@ -10,4 +10,52 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    .nowPlaying {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .playingSongImg {
+            object-fit: cover;
+            width: 75%;
+            margin-bottom: 5%;
+        }
+
+        .timeInfo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            span {
+                margin-left: $s2;
+                margin-right: $s2;
+                font-size: $s3;
+                font-family: $f3;
+           }
+
+           input {
+                width: 100%;
+                flex-grow: 1;
+                accent-color: $verylightgreen;
+                transition: opacity 0.2s;
+
+                &:hover {
+                    cursor:pointer;
+                    opacity: 0.9;
+                }
+
+                &:active {
+                    opacity: 0.8;
+                }
+           }
+        }
+
+        h3 {
+            font-size: $s4;
+        }
+    }
 }

@@ -1,10 +1,11 @@
 import styles from "../scss/App.module.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Header from "./Header";
 import MainWrapper from "./MainWrapper";
 import PlaylistSidebar from "./PlaylistSidebar";
-import SocialsSidebar from "./SocialsSidebar";
+import ControlSidebar from "./ControlSidebar";
 import PopUp from "./PopUp";
+import data from '../assets/SongsData.json';
 
 export interface PlaylistData {
   id: string;
@@ -29,6 +30,10 @@ function App() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState("");
   const [addedSongId, setAddedSongId] = useState<number | null>(null);
+  const [activeSongId, setActiveSongId] = useState<number | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleAddPlaylist = () => {
     if (newPlaylistName.trim() === "") return;
@@ -82,6 +87,43 @@ function App() {
       setSelectedPlaylistId(null);
   }
 
+  const handleTogglePlay = (id: number) => {
+    if(activeSongId === id)
+      setIsPlaying(!isPlaying);
+
+    else {
+      setActiveSongId(id);
+      setIsPlaying(true);
+    }
+  }
+
+  const activeSong = data.find(el => el.id === activeSongId);
+
+  const currentSongImg = activeSong ? `/assets/img/${activeSong.title.split(' ').join('').toLowerCase()}.jpg` : null;
+
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioSrc = activeSong ? `/assets/music/${activeSong.title.split(' ').join('').toLowerCase()}.mp3` : "";
+
+  const handleSeek = (time: number) => {
+    if(audioRef.current)
+      audioRef.current.currentTime = time;
+      setCurrentTime(time);
+  }
+  
+  useEffect(() => {
+    if(audioRef.current && audioSrc)
+      if(isPlaying)
+        audioRef.current.play();
+      else
+        audioRef.current.pause();
+  }, [isPlaying, activeSongId]);
+
+  useEffect(() => {
+        if(audioRef.current) {
+            audioRef.current.volume = volume;
+        }
+    }, [volume]);
+
   useEffect(() => {
     localStorage.setItem("volume", volume.toString());
   }, [volume]);
@@ -93,10 +135,14 @@ function App() {
   return (
     <>
       <div className={styles.container}>
+        <audio ref={audioRef} src={audioSrc} 
+          onTimeUpdate={() => audioRef.current && setCurrentTime(audioRef.current.currentTime)} 
+          onLoadedMetadata={() => audioRef.current && setDuration(audioRef.current.duration)} 
+        />
         <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
         <div className={styles.content}>
-          <SocialsSidebar onVolumeChange={(v) => setVolume(v)} volume={volume} />
-          <MainWrapper globalVolume={volume} searchTerm={searchTerm} selectedPlaylistId={selectedPlaylistId} playlists={playlists} onAddClick={handleOpenAddMenu}/>
+          <ControlSidebar onVolumeChange={(v) => setVolume(v)} volume={volume} currentSongImg={currentSongImg} currentTime={currentTime} duration={duration} onSeek={handleSeek} />
+          <MainWrapper globalVolume={volume} searchTerm={searchTerm} selectedPlaylistId={selectedPlaylistId} playlists={playlists} onAddClick={handleOpenAddMenu} activeSongId={activeSongId} onTogglePlay={handleTogglePlay} isAppPlaying={isPlaying}/>
           <PlaylistSidebar playlists={playlists} onCreateClick={() => setIsCreateModalOpen(true)} onSelectPlaylist={handlePlaylistSelect} selectedId={selectedPlaylistId} onDeletePlaylist={handleRemovePlaylist} />
         </div>
 

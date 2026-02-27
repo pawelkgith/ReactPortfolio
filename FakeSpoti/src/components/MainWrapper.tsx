@@ -10,14 +10,17 @@ interface MainWrapperProps {
     selectedPlaylistId: string | null;
     playlists: PlaylistData[];
     onAddClick: (id: number) => void;
+    activeSongId: number | null;
+    onTogglePlay: (id: number) => void;
+    isAppPlaying: boolean;
 }
 
-function MainWrapper({globalVolume, searchTerm, selectedPlaylistId, playlists, onAddClick} : MainWrapperProps) {
-    const [activeSongId, setActiveSongId] = useState<number | null>(null);
+function MainWrapper({globalVolume, searchTerm, selectedPlaylistId, playlists, onAddClick, activeSongId, onTogglePlay, isAppPlaying} : MainWrapperProps) {
+    // const [activeSongId, setActiveSongId] = useState<number | null>(null);
 
-    const handleTogglePlay = (id: number) => {
-        setActiveSongId(prevId => (prevId === id ? null: id));
-    }
+    // const handleTogglePlay = (id: number) => {
+    //     setActiveSongId(prevId => (prevId === id ? null: id));
+    // }
 
     const filteredSongs = data.filter((song) => {
         const title = song.title?.toLowerCase() ?? "";
@@ -50,9 +53,9 @@ function MainWrapper({globalVolume, searchTerm, selectedPlaylistId, playlists, o
                         id={el.id} 
                         title={el.title} 
                         artist={el.artist} 
-                        isPlaying={activeSongId === el.id} 
+                        isPlaying={activeSongId === el.id && isAppPlaying} 
                         volume={globalVolume} 
-                        onToggle={() => handleTogglePlay(el.id)}
+                        onToggle={() => onTogglePlay(el.id)}
                         onAdd={onAddClick} />
                 ))
             ) :
