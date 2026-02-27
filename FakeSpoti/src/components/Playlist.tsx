@@ -6,9 +6,10 @@ interface PlaylistProps {
     name?: string;
     imageSrc?:string;
     isActive?:boolean;
+    songsCount?:number
 }
 
-function Playlist( { onPlaylistAdd, onDelete, name, imageSrc, isActive } : PlaylistProps) {
+function Playlist( { onPlaylistAdd, onDelete, name, imageSrc, isActive, songsCount } : PlaylistProps) {
     const binIconSrc = "/assets/img/bin.svg";
 
     const handleDeletePlaylist = (e: React.MouseEvent) => {
@@ -22,7 +23,7 @@ function Playlist( { onPlaylistAdd, onDelete, name, imageSrc, isActive } : Playl
                 <img src={imageSrc} alt="Add Button" className={styles.addButton} />
             ) : (
                 <>
-                    <h3 className={`${styles.playlistTitle} ${isActive ? styles.active : ''}`}>{name}</h3>
+                    <h3 className={`${styles.playlistTitle} ${isActive ? styles.active : ''}`}>{`${name} (${songsCount})`}</h3>
                     <img src={binIconSrc} alt="Bin icon" className={styles.binIcon} onClick={handleDeletePlaylist} />
                 </>
             )}

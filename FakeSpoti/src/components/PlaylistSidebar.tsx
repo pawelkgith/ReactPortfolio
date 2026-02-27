@@ -20,6 +20,7 @@ function PlaylistSidebar({ playlists, onCreateClick, onSelectPlaylist, onDeleteP
                 <Playlist
                     key={playlist.id} 
                     name={playlist.name}
+                    songsCount={playlist.songIds.length}
                     onPlaylistAdd={() => onSelectPlaylist(playlist.id)}
                     isActive={playlist.id === selectedId}
                     onDelete={() => onDeletePlaylist(playlist.id)}

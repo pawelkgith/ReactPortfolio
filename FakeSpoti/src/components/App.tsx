@@ -44,8 +44,8 @@ function App() {
     };
 
     setPlaylists([...playlists, newPlaylist]);
-
     setNewPlaylistName("");
+    console.log(newPlaylist.songIds);
     setIsCreateModalOpen(false);
   };
 
@@ -77,7 +77,6 @@ function App() {
         }
       });
     });
-
     setAddedSongId(null);
   }
 
