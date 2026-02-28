@@ -1,6 +1,10 @@
 @use './colors.scss' as *;
 @use './fonts.scss' as *;
 
+* {
+    transition: 0.2s;
+}
+
 .popUp {
     position: fixed;
     height: 30vh;
@@ -50,5 +54,15 @@
         padding: 1rem;
         display: flex;
         flex-direction: column;
+    }
+}
+
+.popUpBlueMode {
+    .header {
+        background-color: $blue;
+
+        h1 {
+            color: $verylightblue;
+        }
     }
 }

@@ -9,7 +9,7 @@ interface PopUpProps {
 
 function PopUp({onClose, title, children } : PopUpProps) {    
     return (
-        <div className={styles.popUp} onClick={onClose}>
+        <div className={`${styles.popUp} ${styles.popUpBlueMode}`} onClick={onClose}>
             <div className={styles.header} onClick={(e) => e.stopPropagation()}>
                 <h1>{title}</h1>
                 <button className={styles.closeBtn} onClick={onClose}>X</button>

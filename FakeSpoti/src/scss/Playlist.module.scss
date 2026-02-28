@@ -1,6 +1,10 @@
 @use './colors.scss' as *;
 @use './fonts.scss' as *;
 
+* {
+    transition: 0.2s;
+}
+
 .playlist {
     display: flex;
     position: relative;
@@ -47,5 +51,11 @@
         height: 40%;
         aspect-ratio: 1/1;
         right: 2%;
+    }
+}
+
+.playlistBlueMode {
+    .active {
+        color: $blue;
     }
 }

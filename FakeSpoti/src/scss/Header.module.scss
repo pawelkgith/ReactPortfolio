@@ -1,6 +1,10 @@
 @use './colors.scss' as *;
 @use './fonts.scss' as *;
 
+* {
+    transition: 0.2s;
+}
+
 .header {
     display: flex;
     width: 100%;
@@ -86,8 +90,7 @@
             margin: $s3;
             border: none;
             border-radius: $s3;
-            transition: box-shadow 0.25s, opacity 0.25s;
-            transition: opacity 0.25s ease, transition 0.1s ease;
+            transition: opacity 0.25s ease, transform 0.2s ease;
             font-size: $s3;
             background-color: $green;
             color: $verylightgray;
@@ -95,12 +98,13 @@
 
             &:hover {
                 box-shadow: 1rem 1rem 1rem rgba(255, 255, 255, 0.15);
+                transform: scale(1.1);
                 cursor: pointer;
             }
 
             &:active {
                 opacity: 0.6;
-                transform: scale(0.95);
+                //transform: scale(1);
             }
         }
     }
@@ -119,6 +123,33 @@
             font-size: $s5;
             text-align: center;
             font-family: $f1;
+        }
+    }
+}
+
+.headerBlueMode {
+    background-color: $steel;
+
+    h1 {
+        color: $verylightblue;
+    }
+
+    .searchbarDiv {
+        .searchbar {
+            border: 1px solid $darksteel;
+            color: $steel;
+        }
+
+        .clear {
+            border: 1px solid $steel;
+            background-color: $darksteel;
+        }
+    }
+
+    .contact {
+        .navBtn {
+            background-color: $blue;
+            color: $verylightblue;
         }
     }
 }

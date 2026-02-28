@@ -1,13 +1,19 @@
 @use './colors.scss' as *;
 @use './fonts.scss' as *;
 
+* {
+    transition: 0.2s;
+}
+
 .volumeContainer {
     display: flex;
     align-items: center;
     gap: $s1;
     width: 100%;
+    height: 10%;
     padding: $s1 $s1;
     margin-top: auto;
+    border-top: 1px solid $green;
 
     .slider {
         width: 100%;
@@ -40,5 +46,13 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+.containerBlueMode {
+    border-top: 1px solid $blue;
+
+    .slider {
+        accent-color: $lightblue;
     }
 }

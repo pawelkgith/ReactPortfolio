@@ -18,7 +18,7 @@ function Playlist( { onPlaylistAdd, onDelete, name, imageSrc, isActive, songsCou
     }
 
     return (
-        <div className={styles.playlist} onClick={onPlaylistAdd}>
+        <div className={`${styles.playlist} ${styles.playlistBlueMode}`} onClick={onPlaylistAdd}>
             {imageSrc ? (
                 <img src={imageSrc} alt="Add Button" className={styles.addButton} />
             ) : (

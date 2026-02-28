@@ -1,6 +1,10 @@
 @use './colors.scss' as *;
 @use './fonts.scss' as *;
 
+* {
+    transition: 0.2s;
+}
+
 .container {
     width: 100%;
     height: 100%;
@@ -116,6 +120,50 @@
                 &:hover {
                     cursor: pointer;
                     background-color: $green;
+                }
+            }   
+        }
+    }
+}
+
+.containerBlueMode {
+    .playlistCreation {
+        .form {
+            .playlistNameInput {
+                border: 1px solid $blue;
+                color: $darksteel;
+            }
+        }
+
+        .modalActions {
+            button {
+                color: $verylightblue;
+                border: 1px solid $verylightblue;
+            }
+
+            .cancelButton {
+                background-color: $red;
+            }
+
+            .createButton {
+                background-color: $blue;
+            }
+        }
+    }
+
+    .playlistSelection {
+        h3 {
+            color: $verylightblue;
+        }
+
+        .list {
+            button {
+                color: $verylightblue;
+                background-color: $darksteel;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: $blue;
                 }
             }   
         }

@@ -2,6 +2,10 @@
 @use './fonts.scss' as *;
 
 * {
+    transition: 0.2s;
+}
+
+* {
     color: $verylightgray;
 }
 
@@ -47,6 +51,7 @@
         padding-top: $s3;
 
         .controlButton {
+            //position: relative;
             width: 20%;
             margin-left: $s2;
             margin-right: $s2;
@@ -55,6 +60,7 @@
             outline: none;
             border: none;
             border-radius: 50%;
+            aspect-ratio: 1/1;
             transition: opacity 0.2s ease, transform 0.1s ease;
             
             &:hover {
@@ -72,9 +78,23 @@
                 height: 100%;
 
                 &.playIcon {
-                    transform: translateX(1px);
+                    padding-left: 2px;
                 }
             }
+        }
+    }
+}
+
+.cardBlueMode {
+    background-color: $lightsteel;
+
+    h2 {
+        color: $verylightblue;
+    }
+
+    .controlPanel {
+        .controlButton {
+            background-color: $blue;
         }
     }
 }

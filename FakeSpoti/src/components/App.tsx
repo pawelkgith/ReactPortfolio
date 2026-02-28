@@ -26,6 +26,11 @@ function App() {
     return savedPlaylists ? JSON.parse(savedPlaylists) : [];
   });
 
+  const [colorMode, setColorMode] = useState<string>(() => {
+    const mode = localStorage.getItem("mode");
+    return mode ? mode : 'green';
+  });
+
   const [selectedPlaylistId, setSelectedPlaylistId] = useState<string | null>(null);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [newPlaylistName, setNewPlaylistName] = useState("");
@@ -131,18 +136,22 @@ function App() {
     localStorage.setItem("myPlaylists", JSON.stringify(playlists));
   }, [playlists]);
 
+  useEffect(() => {
+    localStorage.setItem("mode", colorMode);
+  }, [colorMode]);
+
   return (
     <>
-      <div className={styles.container}>
+      <div className={`${styles.container} ${colorMode==="blue" ? styles.containerBlueMode : ''}`}>
         <audio ref={audioRef} src={audioSrc} 
           onTimeUpdate={() => audioRef.current && setCurrentTime(audioRef.current.currentTime)} 
           onLoadedMetadata={() => audioRef.current && setDuration(audioRef.current.duration)} 
         />
-        <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+        <Header searchTerm={searchTerm} onSearchChange={setSearchTerm} colorMode={colorMode}/>
         <div className={styles.content}>
-          <ControlSidebar onVolumeChange={(v) => setVolume(v)} volume={volume} currentSongImg={currentSongImg} currentTime={currentTime} duration={duration} onSeek={handleSeek} />
-          <MainWrapper globalVolume={volume} searchTerm={searchTerm} selectedPlaylistId={selectedPlaylistId} playlists={playlists} onAddClick={handleOpenAddMenu} activeSongId={activeSongId} onTogglePlay={handleTogglePlay} isAppPlaying={isPlaying}/>
-          <PlaylistSidebar playlists={playlists} onCreateClick={() => setIsCreateModalOpen(true)} onSelectPlaylist={handlePlaylistSelect} selectedId={selectedPlaylistId} onDeletePlaylist={handleRemovePlaylist} />
+          <ControlSidebar onVolumeChange={(v) => setVolume(v)} volume={volume} currentSongImg={currentSongImg} currentTime={currentTime} duration={duration} onSeek={handleSeek} colorMode={colorMode} />
+          <MainWrapper globalVolume={volume} searchTerm={searchTerm} selectedPlaylistId={selectedPlaylistId} playlists={playlists} onAddClick={handleOpenAddMenu} activeSongId={activeSongId} onTogglePlay={handleTogglePlay} isAppPlaying={isPlaying} colorMode={colorMode} />
+          <PlaylistSidebar playlists={playlists} onCreateClick={() => setIsCreateModalOpen(true)} onSelectPlaylist={handlePlaylistSelect} selectedId={selectedPlaylistId} onDeletePlaylist={handleRemovePlaylist} setColorMode={setColorMode} colorMode={colorMode} />
         </div>
 
         {isCreateModalOpen && (

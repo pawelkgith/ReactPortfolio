@@ -9,9 +9,10 @@ interface SongCardProps {
     volume: number;
     onToggle: () => void;
     onAdd: (id: number) => void;
+    colorMode: string;
 }
 
-function SongCard({ id, title, artist, isPlaying, volume, onToggle, onAdd } : SongCardProps) {
+function SongCard({ id, title, artist, isPlaying, volume, onToggle, onAdd, colorMode } : SongCardProps) {
     const bannerSrc = `/assets/img/${title.split(' ').join('').toLowerCase()}.jpg`;
     const playButton = '/assets/img/playbutton.svg';
     const pauseButton = '/assets/img/pausebutton.svg';
@@ -46,7 +47,7 @@ function SongCard({ id, title, artist, isPlaying, volume, onToggle, onAdd } : So
     // }, [volume]);
 
     return (
-        <div className={styles.card}>
+        <div className={`${styles.card} ${colorMode === "blue" ? styles.cardBlueMode : ''}`}>
             {/*<audio ref={audioRef} src={audioSrc} />*/}
 
             <div className={styles.songBanner}>

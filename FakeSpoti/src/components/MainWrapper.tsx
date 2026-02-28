@@ -13,9 +13,10 @@ interface MainWrapperProps {
     activeSongId: number | null;
     onTogglePlay: (id: number) => void;
     isAppPlaying: boolean;
+    colorMode: string;
 }
 
-function MainWrapper({globalVolume, searchTerm, selectedPlaylistId, playlists, onAddClick, activeSongId, onTogglePlay, isAppPlaying} : MainWrapperProps) {
+function MainWrapper({globalVolume, searchTerm, selectedPlaylistId, playlists, onAddClick, activeSongId, onTogglePlay, isAppPlaying, colorMode} : MainWrapperProps) {
     // const [activeSongId, setActiveSongId] = useState<number | null>(null);
 
     // const handleTogglePlay = (id: number) => {
@@ -45,7 +46,7 @@ function MainWrapper({globalVolume, searchTerm, selectedPlaylistId, playlists, o
         //     {data.map((el) => (<SongCard key={el.id} id={el.id} title={el.title} artist={el.artist} isPlaying={activeSongId === el.id} volume={globalVolume} onToggle={() => handleTogglePlay(el.id)}/>))}
         // </div>
 
-        <div className={styles.container}>
+        <div className={`${styles.container} ${colorMode === "blue" ? styles.containerBlueMode : ''}`}>
             {filteredSongs.length > 0 ? (
                 filteredSongs.map((el) => (
                     <SongCard 
@@ -56,7 +57,8 @@ function MainWrapper({globalVolume, searchTerm, selectedPlaylistId, playlists, o
                         isPlaying={activeSongId === el.id && isAppPlaying} 
                         volume={globalVolume} 
                         onToggle={() => onTogglePlay(el.id)}
-                        onAdd={onAddClick} />
+                        onAdd={onAddClick}
+                        colorMode={colorMode} />
                 ))
             ) :
             (

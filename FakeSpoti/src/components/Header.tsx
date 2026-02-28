@@ -5,9 +5,10 @@ import PopUp from './PopUp';
 interface HeaderProps {
   searchTerm: string;
   onSearchChange: (value:string) => void;
+  colorMode: string;
 }
 
-function Header( { searchTerm, onSearchChange } : HeaderProps) {
+function Header( { searchTerm, onSearchChange, colorMode } : HeaderProps) {
   const clearSrc = "/assets/img/clear.svg";
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   
@@ -15,7 +16,7 @@ function Header( { searchTerm, onSearchChange } : HeaderProps) {
 
   return (
     <>
-      <div className={styles.header}>
+      <div className={`${styles.header} ${colorMode === "blue" ? styles.headerBlueMode : ""}`}>
         <h1>Fake Spoti</h1>
         <div className={styles.searchbarDiv}>
           <input

@@ -1,4 +1,4 @@
-import styles from '../scss/SocialsSidebar.module.scss';
+import styles from '../scss/ControlSidebar.module.scss';
 import VolumeSlider from './VolumeSlider';
 
 interface SocialSidebarProps {
@@ -8,9 +8,10 @@ interface SocialSidebarProps {
     currentTime: number;
     duration: number;
     onSeek: (time: number) => void;
+    colorMode: string;
 }
 
-function SocialsSidebar({ onVolumeChange, volume, currentSongImg, currentTime, duration, onSeek } : SocialSidebarProps) {
+function SocialsSidebar({ onVolumeChange, volume, currentSongImg, currentTime, duration, onSeek, colorMode } : SocialSidebarProps) {
     const formatTime = (time: number) => {
         const minutes = Math.floor(time/60);
         const seconds = Math.floor(time%60);
@@ -18,7 +19,7 @@ function SocialsSidebar({ onVolumeChange, volume, currentSongImg, currentTime, d
     }
     
     return (
-        <div className={styles.container}>
+        <div className={`${styles.container} ${colorMode === "blue" ? styles.containerBlueMode : ''}`}>
             <div className={styles.nowPlaying}>
                 {currentSongImg ? (
                     <>
@@ -37,7 +38,7 @@ function SocialsSidebar({ onVolumeChange, volume, currentSongImg, currentTime, d
                 )}
             </div>
 
-            <VolumeSlider onSlide={onVolumeChange} volume={volume} />
+            <VolumeSlider onSlide={onVolumeChange} volume={volume} colorMode={colorMode}/>
         </div>
     );
 }

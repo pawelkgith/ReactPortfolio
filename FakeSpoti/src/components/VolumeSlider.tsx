@@ -4,9 +4,10 @@ import styles from '../scss/VolumeSlider.module.scss';
 interface VolumeSliderProps {
     volume: number;
     onSlide?: (volume: number) => void;
+    colorMode: string;
 }
 
-function VolumeSlider({ volume,  onSlide } : VolumeSliderProps) {
+function VolumeSlider({ volume,  onSlide, colorMode } : VolumeSliderProps) {
     const speakerSrc = "/assets/img/speaker.svg";
     const mutedSpeakerSrc = "/assets/img/mutedspeaker.svg";
     
@@ -37,7 +38,7 @@ function VolumeSlider({ volume,  onSlide } : VolumeSliderProps) {
     }
 
     return (
-        <div className={styles.volumeContainer}>
+        <div className={`${styles.volumeContainer} ${colorMode === "blue" ? styles.containerBlueMode : ''}`}>
             <span className={styles.icon}><img src={volumeValue === 0 ? mutedSpeakerSrc : speakerSrc} onClick={handleVolumeToggle}/></span>
             <input type="range" min="0" max="100" step="1" className={styles.slider} value={Number(volumeValue)} onChange={handleSliderChange}/>
         </div> 
