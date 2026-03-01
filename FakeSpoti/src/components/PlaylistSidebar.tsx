@@ -33,7 +33,8 @@ function PlaylistSidebar({ playlists, onCreateClick, onSelectPlaylist, onDeleteP
                         onPlaylistAdd={() => onSelectPlaylist(playlist.id)}
                         isActive={playlist.id === selectedId}
                         onDelete={() => onDeletePlaylist(playlist.id)}
-                        />
+                        colorMode={colorMode}
+                    />
                 ))}
                 <Playlist imageSrc={addButtonSrc} onPlaylistAdd={onCreateClick} />
             </div>

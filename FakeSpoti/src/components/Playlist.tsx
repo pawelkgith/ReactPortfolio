@@ -7,9 +7,10 @@ interface PlaylistProps {
     imageSrc?:string;
     isActive?:boolean;
     songsCount?:number
+    colorMode?: string;
 }
 
-function Playlist( { onPlaylistAdd, onDelete, name, imageSrc, isActive, songsCount } : PlaylistProps) {
+function Playlist( { onPlaylistAdd, onDelete, name, imageSrc, isActive, songsCount, colorMode } : PlaylistProps) {
     const binIconSrc = "/assets/img/bin.svg";
 
     const handleDeletePlaylist = (e: React.MouseEvent) => {
@@ -18,7 +19,7 @@ function Playlist( { onPlaylistAdd, onDelete, name, imageSrc, isActive, songsCou
     }
 
     return (
-        <div className={`${styles.playlist} ${styles.playlistBlueMode}`} onClick={onPlaylistAdd}>
+        <div className={`${styles.playlist} ${colorMode === "blue" ? styles.playlistBlueMode : ''}`} onClick={onPlaylistAdd}>
             {imageSrc ? (
                 <img src={imageSrc} alt="Add Button" className={styles.addButton} />
             ) : (

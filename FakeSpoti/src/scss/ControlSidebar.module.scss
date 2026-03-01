@@ -39,9 +39,9 @@
                 margin-right: $s2;
                 font-size: $s3;
                 font-family: $f3;
-           }
+            }
 
-           input {
+            input {
                 width: 100%;
                 flex-grow: 1;
                 accent-color: $verylightgreen;
@@ -55,7 +55,7 @@
                 &:active {
                     opacity: 0.8;
                 }
-           }
+            }
         }
 
         h3 {
@@ -72,6 +72,117 @@
            input {
                 accent-color: $lightblue;
            }
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .container {
+        .nowPlaying {
+            .timeInfo {
+                span {
+                    margin-left: 0.8rem;
+                    margin-right: 0.8rem;
+                }
+            }
+
+            h3 {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        .nowPlaying {
+            .playingSongImg {
+                margin-bottom: 4%;
+            }
+
+            .timeInfo {
+                span {
+                    margin-left: 0.7rem;
+                    margin-right: 0.7rem;
+                    font-size: 1.3rem;
+                }
+            }
+
+            h3 {
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 0.4rem;
+
+        .nowPlaying {
+            .playingSongImg {
+                margin-bottom: 3%;
+            }
+
+            .timeInfo {
+                span {
+                    margin-left: 0.6rem;
+                    margin-right: 0.6rem;
+                    font-size: 1.1rem;
+                }
+            }
+
+            h3 {
+                font-size: $s3;
+            }
+        }
+    }
+}
+
+@media (max-width: 762px) {
+    .container {
+        padding: 0.3rem;
+
+        .nowPlaying {
+            .playingSongImg {
+                margin-bottom: 3%;
+            }
+
+            .timeInfo {
+                span {
+                    margin-left: 0.4rem;
+                    margin-right: 0.4rem;
+                    font-size: $s2;
+                }
+            }
+
+            h3 {
+                font-size: 1.35rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0.3rem;
+
+        .nowPlaying {
+            .playingSongImg {
+                margin-bottom: 2%;
+            }
+
+            .timeInfo {
+                span {
+                    margin-left: 0.2rem;
+                    margin-right: 0.2rem;
+                    font-size: 0.8rem;
+                }
+            }
+
+            h3 {
+                font-size: $s2;
+            }
         }
     }
 }

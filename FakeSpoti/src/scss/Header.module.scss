@@ -119,6 +119,7 @@
         }
 
         h2 {
+            overflow-wrap: break-word;
             padding-top: $s3;
             font-size: $s5;
             text-align: center;
@@ -141,7 +142,7 @@
         }
 
         .clear {
-            border: 1px solid $steel;
+            border: 1px solid $darksteel;
             background-color: $darksteel;
         }
     }
@@ -150,6 +151,215 @@
         .navBtn {
             background-color: $blue;
             color: $verylightblue;
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .header {
+        h1 {
+            font-size: 2.9rem;
+        }
+
+        .searchbarDiv {
+            .searchbar {
+                width: 65%;
+                font-size: 1.4rem;
+                padding-right: 1.4rem;
+            }
+        }
+
+        .contact {
+            .navBtn {
+                height: 50%;
+                margin: 1.4rem;
+                font-size: 1.4rem;
+            }
+        }
+
+        .contactContent {
+            h3 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                padding-top: 1.4rem;
+                font-size: $s4;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .header {
+        h1 {
+            font-size: 2.8rem;
+        }
+
+        .searchbarDiv {
+            .searchbar {
+                width: 60%;
+                height: 45%;
+                font-size: 1.3rem;
+                padding-right: 1.2rem;
+            }
+
+            .clear {
+                height: 45%;
+            }
+        }
+
+        .contact {
+            .navBtn {
+                width: 28%;
+                height: 50%;
+                margin: 1.2rem;
+                font-size: 1.2rem;
+            }
+        }
+
+        .contactContent {
+            h3 {
+                font-size: 1.6rem;
+            }
+
+            h2 {
+                padding-top: 1.2rem;
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .header {
+        h1 {
+            font-size: 2.6rem;
+            width: 30%;
+        }
+
+        .searchbarDiv {
+            width: 35%;
+
+            .searchbar {
+                width: 70%;
+                height: 45%;
+                font-size: 1.15rem;
+                padding-right: 1.1rem;
+            }
+
+            .clear {
+                height: 45%;
+            }
+        }
+
+        .contact {
+            width: 30%;
+
+            .navBtn {
+                width: 25%;
+                height: 50%;
+                margin: $s2;
+                font-size: 1.2rem;
+            }
+        }
+
+        .contactContent {
+            h3 {
+                font-size: 1.4rem;
+            }
+
+            h2 {
+                padding-top: $s2;
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 762px) {
+    .header {
+        h1 {
+            font-size: 2.4rem;
+        }
+
+        .searchbarDiv {
+            .searchbar {
+                font-size: $s2;
+                padding-right: $s2;
+            }
+
+            .clearIcon {
+                width: 70%;
+            }
+        }
+
+        .contact {
+            .navBtn {
+                width: 30%;
+                font-size: 1.1rem;
+            }
+        }
+
+        .contactContent {
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                padding-top: 1rem;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        h1 {
+            font-size: 2.1rem;
+            width: 30%;
+        }
+
+        .searchbarDiv {
+            width: 40%;
+
+            .searchbar {
+                width: 70%;
+                height: 40%;
+                font-size: 0.9rem;
+                padding-right: $s1;
+            }
+
+            .clear {
+                height: 40%;
+            }
+
+            .clearIcon {
+                width: 70%;
+            }
+        }
+
+        .contact {
+            width: 30%;
+
+            .navBtn {
+                width: 40%;
+                height: 50%;
+                margin: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        .contactContent {
+            h3 {
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                padding-top: 0.7rem;
+                font-size: $s2;
+            }
         }
     }
 }
