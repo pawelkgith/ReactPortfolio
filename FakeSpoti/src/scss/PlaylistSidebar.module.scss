@@ -10,7 +10,7 @@
     width: 15%;
     height: 100%;
     overflow-y: auto;
-    padding: $s2;
+    padding: $s1;
 
     .playlists {
         height: 90%;
@@ -110,6 +110,66 @@
                 &:before {
                     background-color: $blue;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .container {
+        padding: 0.9rem;
+
+        .playlists {
+            h3 {
+                font-size: 1.9rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding: 0.8rem;
+
+        .playlists {
+            h3 {
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 0.7rem;
+
+        .playlists {
+            h3 {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 762px) {
+    .container {
+        padding: $s1;
+
+        .playlists {
+            h3 {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0.3rem;
+
+        .playlists {
+            h3 {
+                font-size: 0.8rem;
             }
         }
     }

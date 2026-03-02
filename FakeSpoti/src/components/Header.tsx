@@ -37,7 +37,8 @@ function Header( { searchTerm, onSearchChange, colorMode } : HeaderProps) {
         {isPopUpOpen && 
         <PopUp 
           onClose={() => setIsPopUpOpen(false)} 
-          title="Contact me">
+          title="Contact me"
+          colorMode={colorMode}>
             <div className={styles.contactContent}>
               <h3>In case you were intrested in my projects, contact me via e-mail: </h3>
               <h2>pawelkielbasa500@gmail.com</h2>

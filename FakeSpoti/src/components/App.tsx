@@ -158,6 +158,7 @@ function App() {
           <PopUp
             title="Create a new playlist"
             onClose={() => setIsCreateModalOpen(false)}
+            colorMode={colorMode}
           >
             <div className={styles.playlistCreation}>
               <div className={styles.form}>
@@ -184,7 +185,7 @@ function App() {
         )}
 
         {addedSongId && (
-          <PopUp title="Choose a playlist" onClose={() => setAddedSongId(null)}>
+          <PopUp title="Choose a playlist" onClose={() => setAddedSongId(null)} colorMode={colorMode}>
             <div className={styles.playlistSelection}>
               {playlists.length > 0 ? (
                 <>
