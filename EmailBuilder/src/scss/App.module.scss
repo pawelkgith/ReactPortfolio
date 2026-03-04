@@ -1,4 +1,11 @@
+@use './fonts.scss' as *;
+@use './colors.scss' as *;
+
 .container {
     width: 100%;
     height: 100%;
+
+    h1 {
+        font-family: $f2;
+    }
 }
