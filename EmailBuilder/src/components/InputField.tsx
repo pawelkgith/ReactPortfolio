@@ -1,7 +1,17 @@
 import styles from '../scss/InputField.module.scss';
 
-function InputField() {
-    return;
+interface InputFieldProps {
+    caption: string;
+    placeholder: string;
+}
+
+function InputField( {caption, placeholder} : InputFieldProps) {
+    return (
+        <div className={styles.inputField}>
+            <label htmlFor="inputArea">{caption}</label>
+            <input type="text" className={styles.inputArea} placeholder={placeholder} />
+        </div>
+    );
 }
 
 export default InputField;

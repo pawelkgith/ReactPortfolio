@@ -1,2 +1,11 @@
 @use './fonts.scss' as *;
 @use './colors.scss' as *;
+
+.container {
+    width: min(75vw, 80%);
+    height: clamp(40rem, 60vh, 80rem);
+    background-color: $bg-builder;
+    border-radius: $s3;
+    border: 1px solid $border-default;
+    overflow-y: auto;
+}
