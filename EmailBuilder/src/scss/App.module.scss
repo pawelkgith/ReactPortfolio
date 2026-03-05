@@ -21,6 +21,9 @@
             align-items: center;
             width: min(75vw, 80%);
             height: clamp(6rem, 4vh, 5rem);
+            margin-top: min(1vw, 1rem);
+            gap: $s1;
+            padding: $s1;
         }
     }
 }

@@ -1,2 +1,42 @@
 @use './fonts.scss' as *;
 @use './colors.scss' as *;
+
+.container {
+    margin-top: min(1.5vh, 1rem);
+    width: 100%;
+    //min-height: clamp(10rem, 20vh, 30rem);
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-family: $f2;
+        font-size: clamp(1.6rem, 1.5vw, 2.5rem);
+        color: $text-muted;
+        margin-bottom: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    textarea {
+        min-height: clamp(7rem, 10vh, 12rem);
+        resize: none;
+        padding: 0.2rem;
+        color: $text-main;
+        outline: none;
+        border: 2px dashed $border-default;
+        border-radius: $s1;
+        font-size: clamp(1rem, 1.2vw, 1.8rem);
+        transition: border-color 0.3s;
+
+        &::placeholder {
+            color: $text-muted;
+        }
+
+        &:hover {
+            border-color: $border-hover;
+        }
+
+        &:active {
+            border-color: $border-active;
+        }
+    }
+}

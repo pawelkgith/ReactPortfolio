@@ -4,12 +4,12 @@ interface ButtonProps {
     usage: string;
     value: string;
     color?: string;
-    onPhrasePick: (text: string) => void;
+    onButtonClick: (text: string) => void;
 }
 
-function Button( {usage, value, color, onPhrasePick} : ButtonProps) {
+function Button( {usage, value, color, onButtonClick} : ButtonProps) {
     return (
-        <input type="button" className={`${usage === "phrasePicker" ? `${styles.phrasePicker}` : `${styles.controlButton}`} ${color ? styles[color] : ''}`} color={styles.color} value={value} onClick={() => onPhrasePick(value)}/>
+        <input type="button" className={`${styles[usage]} ${color ? styles[color] : ''}`} value={value} onClick={() => onButtonClick(value)}/>
     )
 }
 

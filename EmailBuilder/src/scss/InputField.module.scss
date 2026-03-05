@@ -3,23 +3,23 @@
 
 .inputField {
     width: 100%;
-    min-height: clamp(3rem, 9vh, 10rem);
+    min-height: clamp(3rem, 9vh, 20rem);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: min(0.8rem, 1.2rem);
+    margin-bottom: 1rem;
+    flex: 0 0 auto;
     
     label {
         font-family: $f2;
-        font-size: clamp(1.6rem, 1.5vw, 2.5rem);
+        font-size: clamp(1.2rem, 1.5vw, 2.5rem);
         color: $text-muted;
         margin-bottom: 0.5rem;
         flex-shrink: 0;
     }
 
     input {
-        flex-grow: 1;
-        font-size: clamp(1.4rem, 1vw, 2.4rem);
+        font-size: clamp(1rem, 1vw, 2.4rem);
         padding: min(1%, 1rem);
         font-family: $f3;
         color: $text-main;
@@ -36,7 +36,7 @@
         }
 
         &:focus {
-            border-color: $border-color-active;
+            border-color: $border-active;
         }
     }
 }

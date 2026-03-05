@@ -1,7 +1,7 @@
 import styles from '../scss/InputField.module.scss';
 
 interface InputFieldProps {
-    caption: string;
+    caption?: string;
     placeholder: string;
 }
 

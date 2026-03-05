@@ -22,4 +22,19 @@
         flex-wrap: wrap;
         gap: $s1;
     }
+
+    .pickedPhrase {
+        width: 100%;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        h1 {
+            color: $text-main;
+            font-family: $f3;
+            font-weight: 400;
+            font-size: clamp(1.4rem, 2vw, 2.8rem);
+        }
+    }
 }

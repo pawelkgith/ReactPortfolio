@@ -1,5 +1,4 @@
 import styles from '../scss/PhrasePicker.module.scss';
-import data from '../assets/data.json';
 import Button from './Button';
 import { useState } from 'react';
 
@@ -22,13 +21,13 @@ function PhrasePicker( {phrases, color} : PhrasePickerProps) {
             {!isPhrasePicked ? (
                 <div className={styles.phraseContainer}>
                     {phrases.map(el => (
-                        <Button usage="phrasePicker" key={el} value={el} color={color} onPhrasePick={handlePhrasePick}/>
+                        <Button usage="phrasePicker" key={el} value={el} color={color} onButtonClick={handlePhrasePick} />
                     ))}
                 </div>
                 ) :
                 (
-                    <div className={styles.pickedPhrase}>
-                        <h1 onClick={() => setIsPhrasePicked(false)}>{pickedText}</h1>
+                    <div className={styles.pickedPhrase} onClick={() => setIsPhrasePicked(false)}>
+                        <h1>{pickedText}</h1>
                     </div>
                 )}
 

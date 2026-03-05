@@ -10,7 +10,12 @@ function Builder() {
             <InputField caption="To:" placeholder="E-mail recipent" />
             <InputField caption="Subject:" placeholder="E-mail subject" />
             <PhrasePicker phrases={data.salutations} color="phraseRed" />
+            <InputField placeholder="Recipent" />
             <PhrasePicker phrases={data.openings} color="phrasePurple" />
+            <TextArea />
+            <PhrasePicker phrases={data.closings} color="phrasePink" />
+            <PhrasePicker phrases={data.signOffs} color="phraseBlue" />
+            <InputField caption="Signature:" placeholder="Your name" />
         </div>
     )
 }
