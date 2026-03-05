@@ -8,4 +8,8 @@
     border-radius: $s3;
     border: 1px solid $border-default;
     overflow-y: auto;
+    padding: min(2vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

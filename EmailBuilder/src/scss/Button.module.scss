@@ -1,2 +1,38 @@
 @use './fonts.scss' as *;
 @use './colors.scss' as *;
+
+.phrasePicker {
+    min-height: clamp(1.2rem, 1.6vh, 2rem);
+    padding: min(2vw, 1rem);
+    border: none;
+    color: $text-default;
+    font-family: $f3;
+    border-radius: $s1;
+    font-size: clamp(1.2rem, 0.8vw, 2rem);
+    transition: transform 0.1s, opacity 0.25s;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(0.95);
+    }
+
+    &:active {
+        opacity: 0.7;
+    }
+}
+
+.phraseRed {
+    background-color: $phrase-red;
+}
+
+.phrasePurple {
+    background-color: $phrase-purple;
+}
+
+.phrasePinnk {
+    background-color: $phrase-pink;
+}
+
+.phraseBlue {
+    background-color: $phrase-blue;
+}

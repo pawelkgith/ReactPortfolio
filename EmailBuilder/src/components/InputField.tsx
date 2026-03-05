@@ -9,7 +9,7 @@ function InputField( {caption, placeholder} : InputFieldProps) {
     return (
         <div className={styles.inputField}>
             <label htmlFor="inputArea">{caption}</label>
-            <input type="text" className={styles.inputArea} placeholder={placeholder} />
+            <input type="text" id="inputArea" className={styles.inputArea} placeholder={placeholder} />
         </div>
     );
 }

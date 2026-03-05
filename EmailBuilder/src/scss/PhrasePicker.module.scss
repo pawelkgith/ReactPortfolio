@@ -1,2 +1,25 @@
 @use './fonts.scss' as *;
 @use './colors.scss' as *;
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: min(2%, 2rem);
+    border: 1px solid $border-default;
+    border-radius: $s1;
+    padding: min(2vw, 2rem);
+    transition: border-color 0.2s;
+    margin-bottom: min(2vw, 1rem);
+
+    &:hover {
+        border-color: $border-hover;
+    }
+
+    .phraseContainer {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: $s1;
+    }
+}
