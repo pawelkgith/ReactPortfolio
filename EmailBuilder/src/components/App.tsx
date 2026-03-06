@@ -2,10 +2,13 @@ import styles from '../scss/App.module.scss';
 import Header from './Header';
 import Builder from './Builder';
 import Button from './Button';
+import { useState } from 'react';
 
 function App() {
-  const handleCopy = () => {
+  const [text, setText] = useState('');
 
+  const handleCopy = (text: string) => {
+    setText(text);
   }
 
   const handleReset = () => {
