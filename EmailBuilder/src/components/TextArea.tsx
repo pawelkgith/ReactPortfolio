@@ -1,10 +1,14 @@
 import styles from '../scss/TextArea.module.scss'
 
-function TextArea() {
+interface TextAreaProps {
+    onInputChange: (text: string) => void;
+}
+
+function TextArea( {onInputChange} : TextAreaProps) {
     return (
         <div className={styles.container}>
             <label htmlFor="bodyArea">Body: </label>
-            <textarea id="bodyArea" className={styles.bodyArea} placeholder="Your e-mail body..."></textarea>
+            <textarea id="bodyArea" className={styles.bodyArea} placeholder="Your e-mail body..." onChange={(e) => onInputChange(e.target.value)}></textarea>
         </div>
     )
 }

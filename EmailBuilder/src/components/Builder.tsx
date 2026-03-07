@@ -10,20 +10,31 @@ interface ButtonProps {
 }
 
 function Builder({  } : ButtonProps) {
-    const [emailData, setEmailData] = useState({'to': '', 'subject': '', 'body': ''});
+    const [emailData, setEmailData] = useState({'to': '', 'subject': '', 'salutation': '', 'recipent': '', 'opening': '', 'body': '', 'closing': '', 'signOff': '', 'signature': ''});
+    const [text, setText] = useState('');
+
+    const handleInputChange = (field: string, value: string) => {
+        setEmailData(prev => {
+            const newState = { ...prev, [field]:value}
+            const newValue = `${newState.to}\n${newState.subject}\n${newState.salutation} ${newState.recipent},\n${newState.opening} ${newState.body} ${newState.closing}.\n${newState.signOff}\n${newState.signature}`;
+            setText(newValue);
+            navigator.clipboard.writeText(newValue);
+            return newState;
+        })
+    }
 
     return (
         <div className={styles.container}>
-            <InputField caption="To:" placeholder="E-mail recipent" onInputChange={(v) => setEmailData(prev => ({...prev, to: v}))} />
-            <InputField caption="Subject:" placeholder="E-mail subject" onInputChange={(v) => setEmailData(prev => ({...prev, to: v}))} />
-            <PhrasePicker phrases={data.salutations} color="phraseRed" />
-            <InputField placeholder="Recipent" onInputChange={(v) => setEmailData(prev => ({...prev, to: v}))} />
-            <PhrasePicker phrases={data.openings} color="phrasePurple" />
-            <TextArea />
-            <PhrasePicker phrases={data.closings} color="phrasePink" />
-            <PhrasePicker phrases={data.signOffs} color="phraseBlue" />
-            <InputField caption="Signature:" placeholder="Your name" onInputChange={(v) => setEmailData(prev => ({...prev, to: v}))} />
-            <h1>{emailData.to}</h1>
+            <InputField caption="To:" placeholder="E-mail recipent" onInputChange={v => handleInputChange('to', v)} />
+            {/*<InputField caption="To:" placeholder="E-mail recipent" onInputChange={(v) => setEmailData(prev => ({...prev, to: v}))} />*/}
+            <InputField caption="Subject:" placeholder="E-mail subject" onInputChange={v => handleInputChange('subject', v)} />
+            <PhrasePicker phrases={data.salutations} color="phraseRed" onPhraseSelect={v => handleInputChange('salutation', v)} />
+            <InputField placeholder="Recipent" onInputChange={v => handleInputChange('recipent', v)} />
+            <PhrasePicker phrases={data.openings} color="phrasePurple" onPhraseSelect={v => handleInputChange('opening', v)} />
+            <TextArea onInputChange={(v) => handleInputChange('body', v)} />
+            <PhrasePicker phrases={data.closings} color="phrasePink" onPhraseSelect={v => handleInputChange('closing', v)} />
+            <PhrasePicker phrases={data.signOffs} color="phraseBlue" onPhraseSelect={v => handleInputChange('signOff', v)} />
+            <InputField caption="Signature:" placeholder="Your name" onInputChange={v => handleInputChange('signature', v)} />
         </div>
     )
 }

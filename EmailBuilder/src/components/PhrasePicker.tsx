@@ -5,15 +5,17 @@ import { useState } from 'react';
 interface PhrasePickerProps {
     phrases: string[];
     color: string;
+    onPhraseSelect: (value: string) => void;
 }
 
-function PhrasePicker( {phrases, color} : PhrasePickerProps) {
+function PhrasePicker( {phrases, color, onPhraseSelect} : PhrasePickerProps) {
     const [isPhrasePicked, setIsPhrasePicked] = useState(false);
     const [pickedText, setPickedText] = useState('');
 
     const handlePhrasePick = (value: string) => {
         setPickedText(value);
         setIsPhrasePicked(true);
+        onPhraseSelect(value);
     }
 
     return (
