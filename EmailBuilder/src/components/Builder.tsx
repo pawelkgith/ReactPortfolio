@@ -6,19 +6,17 @@ import data from '../assets/data.json';
 import { useState } from 'react';
 
 interface ButtonProps {
-    //setText: () => void;
+    setText: (value: string) => void;
 }
 
-function Builder({  } : ButtonProps) {
+function Builder({ setText } : ButtonProps) {
     const [emailData, setEmailData] = useState({'to': '', 'subject': '', 'salutation': '', 'recipent': '', 'opening': '', 'body': '', 'closing': '', 'signOff': '', 'signature': ''});
-    const [text, setText] = useState('');
 
     const handleInputChange = (field: string, value: string) => {
         setEmailData(prev => {
             const newState = { ...prev, [field]:value}
             const newValue = `${newState.to}\n${newState.subject}\n${newState.salutation} ${newState.recipent},\n${newState.opening} ${newState.body} ${newState.closing}.\n${newState.signOff}\n${newState.signature}`;
             setText(newValue);
-            navigator.clipboard.writeText(newValue);
             return newState;
         })
     }
