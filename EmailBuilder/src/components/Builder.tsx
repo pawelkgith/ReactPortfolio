@@ -10,7 +10,7 @@ interface ButtonProps {
 }
 
 function Builder({ setText } : ButtonProps) {
-    const [emailData, setEmailData] = useState({'to': '', 'subject': '', 'salutation': '', 'recipent': '', 'opening': '', 'body': '', 'closing': '', 'signOff': '', 'signature': ''});
+    const [emailData, setEmailData] = useState({'to': '', 'subject': '', 'salutation': '', 'recipent': '', 'opening': '', 'body': [''], 'closing': '', 'signOff': '', 'signature': ''});
 
     const handleInputChange = (field: string, value: string) => {
         setEmailData(prev => {
@@ -21,6 +21,21 @@ function Builder({ setText } : ButtonProps) {
         })
     }
 
+    const addParagraph = () => {
+        setEmailData(prev => ({
+            ...prev,
+            body: [...prev.body, '']
+        }));
+    }
+
+    const handleParagraphChange = (index: number, value: string) => {
+        setEmailData(prev => {
+            const newBody = [...prev.body];
+            newBody[index] = value;
+            return {...prev, body: newBody}
+        });
+    }
+
     return (
         <div className={styles.container}>
             <InputField caption="To:" placeholder="E-mail recipent" onInputChange={v => handleInputChange('to', v)} />
@@ -29,7 +44,11 @@ function Builder({ setText } : ButtonProps) {
             <PhrasePicker phrases={data.salutations} color="phraseRed" onPhraseSelect={v => handleInputChange('salutation', v)} />
             <InputField placeholder="Recipent" onInputChange={v => handleInputChange('recipent', v)} />
             <PhrasePicker phrases={data.openings} color="phrasePurple" onPhraseSelect={v => handleInputChange('opening', v)} />
-            <TextArea onInputChange={(v) => handleInputChange('body', v)} />
+            {/* <TextArea onInputChange={(v) => handleInputChange('body', v)} /> */}
+            {emailData.body.map((paragraphText, index) => (
+                <TextArea key={index} value={paragraphText} onInputChange={(v) => handleParagraphChange(index, v)} />
+            ))}
+            <button className={styles.addParagraphButton} onClick={addParagraph}>+</button>
             <PhrasePicker phrases={data.closings} color="phrasePink" onPhraseSelect={v => handleInputChange('closing', v)} />
             <PhrasePicker phrases={data.signOffs} color="phraseBlue" onPhraseSelect={v => handleInputChange('signOff', v)} />
             <InputField caption="Signature:" placeholder="Your name" onInputChange={v => handleInputChange('signature', v)} />

@@ -12,4 +12,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    .addParagraphButton {
+        outline: none;
+        border: none;
+        color: $text-main;
+        background-color: transparent;
+        font-size: clamp(2rem, 2.6vw, 4rem);
+        transition: transform 0.2s;
+        margin-top: min(2vh, 1rem);
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:active {
+            transform: scale(1.1);
+        }
+    }
 }
