@@ -3,7 +3,7 @@ import InputField from './InputField';
 import PhrasePicker from './PhrasePicker';
 import TextArea from './TextArea';
 import data from '../assets/data.json';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ButtonProps {
     setText: (value: string) => void;
@@ -12,13 +12,26 @@ interface ButtonProps {
 function Builder({ setText } : ButtonProps) {
     const [emailData, setEmailData] = useState({'to': '', 'subject': '', 'salutation': '', 'recipent': '', 'opening': '', 'body': [''], 'closing': '', 'signOff': '', 'signature': ''});
 
+    useEffect(() => {
+        const {to, subject, salutation, recipent, opening, body, closing, signOff, signature } = emailData;
+        
+        const firstParagraph = body[0] || '';
+        const otherParagraphs = body.slice(1).join('\n\n');
+        const middleSection = otherParagraphs ? `\n\n${otherParagraphs}` : '';
+
+        const newValue = `${to}
+${subject}
+${salutation} ${recipent}
+${opening} ${firstParagraph}${middleSection}
+
+${closing}
+${signOff}
+${signature}`.trim();
+        setText(newValue);
+    }, [emailData, setText]);
+
     const handleInputChange = (field: string, value: string) => {
-        setEmailData(prev => {
-            const newState = { ...prev, [field]:value}
-            const newValue = `${newState.to}\n${newState.subject}\n${newState.salutation} ${newState.recipent},\n${newState.opening} ${newState.body} ${newState.closing}.\n${newState.signOff}\n${newState.signature}`;
-            setText(newValue);
-            return newState;
-        })
+        setEmailData(prev => ({...prev, [field]: value}));
     }
 
     const addParagraph = () => {
