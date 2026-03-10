@@ -12,7 +12,7 @@ function Header( { searchTerm, onSearchChange, colorMode } : HeaderProps) {
   const clearSrc = "/assets/img/clear.svg";
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   
-  const handleGithubRedirect = (event:MouseEvent) => {window.open("https://github.com/pawelkgith/portfolio", "_blank")};
+  const handleGithubRedirect = (event:MouseEvent) => {window.open("https://github.com/pawelkgith/ReactPortfolio", "_blank")};
 
   return (
     <>
