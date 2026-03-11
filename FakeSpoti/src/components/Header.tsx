@@ -12,7 +12,7 @@ function Header( { searchTerm, onSearchChange, colorMode } : HeaderProps) {
   const clearSrc = "/assets/img/clear.svg";
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   
-  const handleGithubRedirect = (event:MouseEvent) => {window.open("https://github.com/pawelkgith/ReactPortfolio", "_blank")};
+  const handleGithubRedirect = () => {window.open("https://github.com/pawelkgith/ReactPortfolio", "_blank")};
 
   return (
     <>
@@ -31,7 +31,7 @@ function Header( { searchTerm, onSearchChange, colorMode } : HeaderProps) {
           </button>
         </div>
         <nav className={styles.contact}>
-          <button className={styles.navBtn} onClick={handleGithubRedirect}>GitHub</button>
+          <button className={styles.navBtn} onClick={handleGithubRedirect}>Projects</button>
           <button className={styles.navBtn} onClick={() => setIsPopUpOpen(!isPopUpOpen)}>Contact</button>
         </nav>
         {isPopUpOpen && 
