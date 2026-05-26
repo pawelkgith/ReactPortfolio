@@ -14,7 +14,7 @@ interface PlaylistSidebarProps {
 }
 
 function PlaylistSidebar({ playlists, onCreateClick, onSelectPlaylist, onDeletePlaylist, selectedId, colorMode, setColorMode }: PlaylistSidebarProps ) {
-    const addButtonSrc = "/assets/img/plusbutton.svg";
+    const addButtonSrc = "assets/img/plusbutton.svg";
 
     const handleColorModeChange = () => {
         const nextMode = colorMode === "green" ? "blue" : "green";

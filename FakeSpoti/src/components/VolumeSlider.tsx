@@ -8,8 +8,8 @@ interface VolumeSliderProps {
 }
 
 function VolumeSlider({ volume,  onSlide, colorMode } : VolumeSliderProps) {
-    const speakerSrc = "/assets/img/speaker.svg";
-    const mutedSpeakerSrc = "/assets/img/mutedspeaker.svg";
+    const speakerSrc = "assets/img/speaker.svg";
+    const mutedSpeakerSrc = "assets/img/mutedspeaker.svg";
     
     const [volumeValue, setVolumeValue] = useState(100);
     const [prevVolume, setPrevVolume] = useState<number | null>(null);

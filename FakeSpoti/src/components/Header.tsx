@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 
 function Header( { searchTerm, onSearchChange, colorMode } : HeaderProps) {
-  const clearSrc = "/assets/img/clear.svg";
+  const clearSrc = "assets/img/clear.svg";
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   
   const handleGithubRedirect = () => {window.open("https://github.com/pawelkgith/ReactPortfolio", "_blank")};

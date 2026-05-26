@@ -13,10 +13,10 @@ interface SongCardProps {
 }
 
 function SongCard({ id, title, artist, isPlaying, volume, onToggle, onAdd, colorMode } : SongCardProps) {
-    const bannerSrc = `/assets/img/${title.split(' ').join('').toLowerCase()}.jpg`;
-    const playButton = '/assets/img/playbutton.svg';
-    const pauseButton = '/assets/img/pausebutton.svg';
-    const addButton = '/assets/img/plusbutton.svg';
+    const bannerSrc = `assets/img/${title.split(' ').join('').toLowerCase()}.jpg`;
+    const playButton = 'assets/img/playbutton.svg';
+    const pauseButton = 'assets/img/pausebutton.svg';
+    const addButton = 'assets/img/plusbutton.svg';
 
     // const audioRef = useRef<HTMLAudioElement>(null);
     // const audioSrc = `assets/music/${title.split(' ').join('').toLowerCase()}.mp3`;

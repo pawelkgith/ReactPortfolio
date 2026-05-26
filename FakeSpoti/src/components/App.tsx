@@ -103,10 +103,10 @@ function App() {
 
   const activeSong = data.find(el => el.id === activeSongId);
 
-  const currentSongImg = activeSong ? `/assets/img/${activeSong.title.split(' ').join('').toLowerCase()}.jpg` : null;
+  const currentSongImg = activeSong ? `assets/img/${activeSong.title.split(' ').join('').toLowerCase()}.jpg` : null;
 
   const audioRef = useRef<HTMLAudioElement>(null);
-  const audioSrc = activeSong ? `/assets/music/${activeSong.title.split(' ').join('').toLowerCase()}.mp3` : "";
+  const audioSrc = activeSong ? `assets/music/${activeSong.title.split(' ').join('').toLowerCase()}.mp3` : "";
 
   const handleSeek = (time: number) => {
     if(audioRef.current)
