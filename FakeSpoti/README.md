@@ -6,14 +6,14 @@
 
 FakeSpoti is a front-end simulation of a modern streaming platform. It demonstrates advanced React state management, strict type-safety via TypeScript, and professional UI structure. It solves the challenge of handling real-time audio playback control and dynamic layout changes seamlessly without heavy framework overhead.
 
-🔗 **[Live demo]([https://twoj-link-tutaj.vercel.app](https://fake-spoti.netlify.app/))**
+**[Live demo](https://fake-spoti.netlify.app)**
 
 ## Core features
 
-- 📱 **Fully Responsive Design** – adjusted to mobile, tablets and desktop devices with SASS.
-- 🔒 **Type Safety** – entire application fully in TypeScript.
-- 🔄 **State Management** – managing states with Hooks.
-- 🎨 **Dark Mode** – płynne przełączanie motywów (zrobione na zmiennych SASS/CSS).
+- **Fully Responsive Design** – adjusted to mobile, tablets and desktop devices with SASS.
+- **Type Safety** – entire application fully in TypeScript.
+- **State Management** – managing states with Hooks.
+- **Dark Mode** – płynne przełączanie motywów (zrobione na zmiennych SASS/CSS).
 
 ## 🛠️ Tech Stack
 
